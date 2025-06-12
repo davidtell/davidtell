@@ -1,8 +1,8 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Invitación Juan y Laura</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
@@ -10,19 +10,24 @@
       margin: 0;
       padding: 0;
       height: 100vh;
+      background: linear-gradient(to bottom, #fff6fa 0%, #ffeef4 25%, #ffeef4 75%, #fff6fa 100%);
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(
-        to bottom,
-        #fff6fa 0%,
-        #ffeef4 25%,
-        #ffeef4 75%,
-        #fff6fa 100%
-      );
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       text-align: center;
+    }
+
+    #contenido {
+      opacity: 0;
+      transition: opacity 2s ease;
+      display: none;
+    }
+
+    #contenido.mostrar {
+      display: block;
+      opacity: 1;
     }
 
     h1 {
@@ -46,6 +51,23 @@
       margin-top: 0.3em;
     }
 
+    button {
+      background-color: #c71585;
+      color: white;
+      border: none;
+      padding: 1em 2em;
+      font-size: 1.3em;
+      font-family: 'Great Vibes', cursive;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
     @media (max-width: 480px) {
       h1 {
         font-size: 3em;
@@ -56,14 +78,38 @@
       .emoji-line {
         font-size: 2.5em;
       }
+      button {
+        font-size: 1.2em;
+        padding: 0.8em 1.5em;
+      }
     }
   </style>
-  <meta http-equiv="refresh" content="5;url=https://davidtell.github.io/davidtell/canva.pdf">
 </head>
 <body>
-  <h1>Juan y Laura 💗</h1>
-  <p>¡Nos alegra compartir este momento tan especial con ustedes!</p> 
-  <div class="emoji-line">25 años 💍</div>
+
+  <button onclick="mostrarInvitacion()">💖 Oprímeme 💖</button>
+
+  <div id="contenido">
+    <h1>Juan y Laura 💗</h1>
+    <p>¡Nos alegra compartir este momento tan especial con ustedes!</p> 
+    <div class="emoji-line">25 años 💍</div>
+  </div>
+
+  <audio id="musica" src="HMF.mp3"></audio>
+
+  <script>
+    function mostrarInvitacion() {
+      document.querySelector("button").style.display = "none";
+      const contenido = document.getElementById("contenido");
+      contenido.classList.add("mostrar");
+      document.getElementById("musica").play();
+
+      // Redirigir después de 8 segundos
+      setTimeout(() => {
+        window.location.href = "https://davidtell.github.io/davidtell/canva.pdf";
+      }, 8000);
+    }
+  </script>
 </body>
 </html>
 
