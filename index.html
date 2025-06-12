@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Invitación Jaime y Gloria</title>
+  <title>Invitación TODOS</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
@@ -17,6 +17,8 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
     #contenido {
@@ -52,7 +54,7 @@
     }
 
     button {
-      background-color: #b38cc5; /* morado suave */
+      background-color: #b38cc5;
       color: white;
       border: none;
       padding: 1.4em 3em;
@@ -67,6 +69,36 @@
     button:hover {
       transform: scale(1.07);
       background-color: #a07cb2;
+    }
+
+    .corner {
+      position: absolute;
+      width: 60px;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    .top-left {
+      top: 0;
+      left: 0;
+    }
+
+    .top-right {
+      top: 0;
+      right: 0;
+      transform: rotate(90deg);
+    }
+
+    .bottom-left {
+      bottom: 0;
+      left: 0;
+      transform: rotate(-90deg);
+    }
+
+    .bottom-right {
+      bottom: 0;
+      right: 0;
+      transform: rotate(180deg);
     }
 
     @media (max-width: 480px) {
@@ -88,14 +120,23 @@
 </head>
 <body>
 
+  <!-- Esquinas decorativas -->
+  <img src="esquina.png" class="corner top-left" alt="Decoración esquina">
+  <img src="esquina.png" class="corner top-right" alt="Decoración esquina">
+  <img src="esquina.png" class="corner bottom-left" alt="Decoración esquina">
+  <img src="esquina.png" class="corner bottom-right" alt="Decoración esquina">
+
+  <!-- Botón inicial -->
   <button onclick="mostrarInvitacion()">💖 Oprímeme 💖</button>
 
+  <!-- Contenido que aparece -->
   <div id="contenido">
-    <h1>Jaime y Gloria 💗</h1>
+    <h1>💗 Estan invitados 💗</h1>
     <p>¡Nos alegra compartir este momento tan especial con ustedes!</p> 
     <div class="emoji-line">25 años 💍</div>
   </div>
 
+  <!-- Música -->
   <audio id="musica" src="def.mp3"></audio>
 
   <script>
@@ -105,7 +146,6 @@
       contenido.classList.add("mostrar");
       document.getElementById("musica").play();
 
-      // Redirigir después de 8 segundos
       setTimeout(() => {
         window.location.href = "https://davidtell.github.io/davidtell/canva.pdf";
       }, 8000);
